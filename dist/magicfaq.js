@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (window.MagicFAQ) return;
 		window.MagicFAQ = true;
 
-		const scriptTag = document.currentScript;
+		const scriptTag = document.querySelector('script[src*="magicfaq-js"]');
+		if (!scriptTag) return;
+
 		const uid = scriptTag.getAttribute("data-uid") || "default_uid";
 		const position = scriptTag.getAttribute("data-position") || "bottom-right";
 
@@ -94,8 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
 	})();
 });
 
-
 // Usage example:
 {/* <script src="https://cdn.magicfaq.co/script.js" data-uid="12345" data-position="bottom-right"></script> */ }
-
-
