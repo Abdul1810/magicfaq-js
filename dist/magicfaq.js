@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		}, 100);
 
 		const chatIcon =
-			<svg fill="#fff" width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+			`<svg fill="#fff" width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 				<title>Chat</title>
 				<path d="M96 368Q83 368 74 359 64 349 64 336L64 128Q64 114 74 105 83 96 96 96L416 96Q430 96 439 105 448 114 448 128L448 336Q448 349 439 359 430 368 416 368L256 368 160 464 160 368 96 368Z" />
-			</svg>;
+			</svg>`;
 		const closeIcon =
-			<svg fill="#fff" width="24px" height="24px" viewBox="-1 0 19 19" xmlns="http://www.w3.org/2000/svg">
+			`<svg fill="#fff" width="24px" height="24px" viewBox="-1 0 19 19" xmlns="http://www.w3.org/2000/svg">
 				<path d="M8.5 15.313a1.026 1.026 0 0 1-.728-.302l-6.8-6.8a1.03 1.03 0 0 1 1.455-1.456L8.5 12.828l6.073-6.073a1.03 1.03 0 0 1 1.455 1.456l-6.8 6.8a1.026 1.026 0 0 1-.728.302z" />
-			</svg>;
+			</svg>`;
 
 		button.innerHTML = chatIcon;
 
