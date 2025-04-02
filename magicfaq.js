@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const updateWidgetState = () => {
 			iframe.style.display = isWidgetOpen ? "block" : "none";
-			button.style.backgroundColor = isWidgetOpen ? "#0056b3" : "#007bff";
+			button.style.backgroundColor = "#007bff";
 			button.innerHTML = isWidgetOpen ? closeIcon : chatIcon;
 
 			if (iframe.contentWindow) {

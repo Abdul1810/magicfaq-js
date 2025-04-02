@@ -1,18 +1,20 @@
 {
-  "name": "magicfaq",
+  "name": "@magicfaq/js",
   "version": "1.0.0",
   "description": "The package to interact with magicfaq in your website",
   "keywords": [
     "easycrm",
     "allinone",
     "magicfaq",
-    "magicfaqjs"
+    "vanilla",
+    "javascript"
   ],
   "license": "ISC",
   "author": "Abdul1810",
   "type": "commonjs",
   "main": "dist/magicfaq.min.js",
   "scripts": {
+    "minify": "uglifyjs magicfaq.js -o dist/magicfaq.min.js --compress --mangle",
     "test": "node magicfaq.min.js"
   }
 }
