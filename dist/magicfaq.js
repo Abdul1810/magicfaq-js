@@ -71,19 +71,29 @@ document.addEventListener("DOMContentLoaded", function () {
 		button.innerHTML = chatIcon;
 
 		let isWidgetOpen = false;
-		button.addEventListener("click", () => {
-			isWidgetOpen = !isWidgetOpen;
+
+		const updateWidgetState = () => {
 			iframe.style.display = isWidgetOpen ? "block" : "none";
 			button.style.backgroundColor = isWidgetOpen ? "#0056b3" : "#007bff";
 			button.innerHTML = isWidgetOpen ? closeIcon : chatIcon;
+
+			if (iframe.contentWindow) {
+				iframe.contentWindow.postMessage(
+					{ action: isWidgetOpen ? "open" : "close" },
+					"*"
+				);
+			}
+		};
+
+		button.addEventListener("click", () => {
+			isWidgetOpen = !isWidgetOpen;
+			updateWidgetState();
 		});
 
 		window.addEventListener("message", (event) => {
 			if (event.data.action === "close") {
 				isWidgetOpen = false;
-				iframe.style.display = "none";
-				button.style.backgroundColor = "#007bff";
-				button.innerHTML = chatIcon;
+				updateWidgetState();
 			}
 		});
 
@@ -92,6 +102,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 		button.addEventListener("mouseleave", () => {
 			button.style.transform = isWidgetOpen ? "scale(0.9)" : "scale(1)";
+		});
+
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape" && isWidgetOpen) {
+				isWidgetOpen = false;
+				updateWidgetState();
+				window.parent.postMessage({ action: "close" }, "*");
+			}
+		};
+
+		document.addEventListener("keydown", handleKeyDown);
+
+		window.addEventListener("beforeunload", () => {
+			document.removeEventListener("keydown", handleKeyDown);
 		});
 	})();
 });
