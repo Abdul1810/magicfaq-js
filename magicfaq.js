@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (window.MagicFAQ) return;
 		window.MagicFAQ = true;
 
-		const scriptTag = document.querySelector('script[src*="magicfaq-js"]');
+		const scriptTag = document.querySelector('script[src*="magicfaq"]');
 		if (!scriptTag) return;
 
 		const uid = scriptTag.getAttribute("data-uid") || "default_uid";
