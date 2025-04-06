@@ -6,6 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		const scriptTag = document.querySelector('script[src*="magicfaq"]');
 		if (!scriptTag) return;
 
+		function isMobile() {
+			return (
+				window.innerWidth <= 800
+				|| window.innerHeight <= 800
+			);
+		}
+		const isMobileDevice = isMobile();
 		const uid = scriptTag.getAttribute("data-uid") || "default_uid";
 		const position = scriptTag.getAttribute("data-position") || "bottom-right";
 
@@ -25,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		button.style.transition = "all 0.3s ease";
 		button.style.opacity = "0";
 		button.style.transform = "scale(0.8)";
-		button.style.zIndex = "9999";
+		button.style.zIndex = isMobileDevice ? "99" : "9999";
 
 		if (position.includes("top")) {
 			button.style.top = "24px";
@@ -69,9 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			</svg>`;
 
 		button.innerHTML = chatIcon;
-
 		let isWidgetOpen = false;
-
 		const updateWidgetState = () => {
 			iframe.style.display = isWidgetOpen ? "block" : "none";
 			button.style.backgroundColor = "#007bff";
